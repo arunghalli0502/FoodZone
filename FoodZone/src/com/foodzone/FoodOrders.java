@@ -39,7 +39,7 @@ public class FoodOrders
 		{
 			while(ordermore)
 			{
-				System.out.println("Select food items  \n");
+				System.out.println("Select veg food items  \n");
 				
 				for(int y=1; y<flst.size(); y++) //---------------**************************************
 				{
@@ -62,9 +62,6 @@ public class FoodOrders
 				}
 			}
 			System.out.println("\n");
-			
-			
-			
 			Map<String, Double> fp= finalprice(orderfl);
 
 			System.out.println("Confirm us to procede further: yes/no ");
@@ -79,8 +76,8 @@ public class FoodOrders
 					System.out.println("Select the Payment mode\n"
 							+"1. CashOn Delivery \n  2. Debit Card \n");
 					System.out.println("Enter the payment option");
-					Scanner scan= new Scanner(System.in);
-					int paymentoption= scan.nextInt();
+					Scanner scan1= new Scanner(System.in);
+					int paymentoption= scan1.nextInt();
 					switch(paymentoption)
 					{
 						case 1: {
@@ -97,8 +94,16 @@ public class FoodOrders
 											discount=9;
 										}
 									}
-									fp.put("finalPrice", (fp.get("finalPrice")*(discount/100)));
-									System.out.println("Total Payable amount is: "+fp.get("finalPrice")+"\n payments Status : Pending(COD)");
+									if(discount>0)
+									{
+										fp.put("finalPrice", (fp.get("finalPrice")*(discount/100)));
+									}
+									System.out.println("Total Payable amount is: "+fp.get("finalPrice")+" \n");
+									System.out.println("Please wait a momment.....\n"
+											+ "***** Payment Pending:COD *****\n"
+											+ "Orderplaced Succesfully................................\n"
+											+ "@@@@@@@@@@@@@@@---- Thank you, Visit again ----@@@@@@@@@@@@@@@");
+									
 								};
 								break;
 						case 2:{
@@ -143,7 +148,7 @@ public class FoodOrders
 									
 									if((cardno+"").length()==16 && (cvv+"").length()==3)
 									{
-										repeate=false;
+										
 										DebitCard dbc= new DebitCard();
 										dbc.setCardnumber(cardno);
 										dbc.setCvv(cvv);
@@ -153,6 +158,7 @@ public class FoodOrders
 												+ "***** Payment successful *****\n"
 												+ "Orderplaced Succesfully................................\n"
 												+ "@@@@@@@@@@@@@@@---- Thank you, Visit again ----@@@@@@@@@@@@@@@");
+										repeate=false;
 										break;
 										
 									}
@@ -176,14 +182,16 @@ public class FoodOrders
 				System.out.println("order Again");
 				orderfl.removeAll(orderfl);
 				food(type);
+				System.out.println(type);
 			}
 		}
+	
 		else
 		{
 			while(ordermore)
 			{
 				System.out.println("Select Non-veg food items  \n");
-				
+				System.out.println("line number 197 executed");
 				for(int i=1; i<flst.size(); i++) //---------------**************************************
 				{
 					if(flst.get(i).getType().equals("Non-veg"))

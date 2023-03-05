@@ -34,6 +34,49 @@ public class login
 	}
 	
 	
+	public void signUp()
+	{
+		Scanner ssc= new Scanner(System.in);
+		
+		System.out.println("@@@@@@ *** Welcome To Food Zone *** @@@@@@ \n"
+				+ "Kindly enter the below details \n");
+		System.out.println("Enter First Name: ");
+		String fname= ssc.next();
+		
+		System.out.println("Enter Last Name: ");
+		String lname= ssc.next();
+		
+		System.out.println("Enter Email: ");
+		String email= ssc.next();
+		
+		System.out.println("Enter password: ");
+		String password= ssc.next();
+		
+		System.out.println("Enter Mobile number: ");
+		long mobile= ssc.nextLong();
+		
+		User u1= new User();
+		u1.setEmail(email);
+		u1.setFname(fname);
+		u1.setLname(lname);
+		u1.setPassword(password);
+		u1.setMobile_number(mobile);
+		
+		datab.put(u1.getEmail(), u1);
+		System.out.println("Registerd successfully \n"
+				+ "Thnak you \n"
+				+ "Kindly enter username and password to Login \n");
+		
+		
+		
+		System.out.println("Enter mobile number or email id \n");
+		String username= ssc.next()+"";
+		System.out.println("Enter password...");
+		String password1= ssc.next();
+		Login(username,password1 );
+		
+	}
+	
 	
 	public  void Login(String username, String password)
 	{

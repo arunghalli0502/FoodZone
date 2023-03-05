@@ -20,7 +20,13 @@ public class MainFoodzone {
 						
 						login l= new login();
 						l.Login(username, password);
-					}
+					}; break;
+					
+			case 2: {
+						login l= new login();
+						l.signUp();
+					}; break;
+			default: System.out.println("Invalid Option");
 		}
 		
 
